@@ -7,6 +7,7 @@ import HouseIcon from '../images/house 1.svg';
 import ShoppingIcon from '../images/online-shopping 1.svg';
 import WorldIcon from '../images/world 1.svg';
 import BurgerIcon from '../images/menu-_1_ 1.svg'
+import { Link } from 'react-router-dom';
 
 const List = () => {
   return (
@@ -23,21 +24,21 @@ const List = () => {
           <img src={ClipboardIcon} alt='Clipboard' />
             
           </div>
-          <p className='head'>All</p>
+          <Link to="./all-tasks" className='head'>All</Link>
           <p>23 tasks</p>
         </div>
         <div className='cards'>
           <div className='icon'>
             <img src={BriefcaseIcon} alt='Briefcase' />
           </div>
-          <p className='head'>Work</p>
+          <Link to="./work" className='head'>Work</Link>
           <p>14 tasks</p>
         </div>
         <div className='cards'>
           <div className='icon'>
             <img src={BookIcon} alt='Book' />
           </div>
-          <p className='head'>Study</p>
+          <Link to="./study" className='head'>Study</Link>
           <p>2 tasks</p>
         </div>
         <div className='cards'>
@@ -45,21 +46,21 @@ const List = () => {
           <img src={WorldIcon} alt='World' />
             
           </div>
-          <p className='head'>Travel</p>
+          <Link to="./travel" className='head'>Travel</Link>
           <p>14 tasks</p>
         </div>
         <div className='cards'>
           <div className='icon'>
             <img src={ShoppingIcon} alt='Shopping' />
           </div>
-          <p className='head'>Shopping</p>
+          <Link to="./shopping" className='head'>Shopping</Link>
           <p>5 tasks</p>
         </div>
         <div className='cards'>
           <div className='icon'>
           <img src={HouseIcon} alt='House' />
           </div>
-          <p className='head'>Home</p>
+          <Link to='./home' className='head'>Home</Link>
           <p>8 tasks</p>
         </div>
       </div>
