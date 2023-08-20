@@ -20,7 +20,7 @@ const AddTask = () => {
       <div className='background-blue'>
         <div className='category'>
           <label htmlFor='categorySelect'>Select a category</label>
-          <select id='categorySelect' onChange={(e) => setSelectedCategory(e.target.value)}>
+          <select required id='categorySelect' onChange={(e) => setSelectedCategory(e.target.value)}>
             <option value='empty'></option>
             <option value='work'>Work</option>
             <option value='study'>Study</option>
@@ -31,6 +31,7 @@ const AddTask = () => {
 
           <label htmlFor='taskInput'>Type a task here</label>
           <textarea
+          required
             id='taskInput'
             rows='4'
             value={taskText}

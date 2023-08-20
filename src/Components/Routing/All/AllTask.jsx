@@ -59,7 +59,8 @@ const AllTask = () => {
           {data.map((item, id) => (
             <div key={id} className='task-item'>
               <img id='hash' src={Dot} alt='' />
-              <p>{item.task}</p>
+              <div className='inside'><p>{item.task}</p> </div>
+              
               <img id='tick' src={Tick} alt=''/>
               <img id='delete' src={Delete} alt=''/>
             </div>
