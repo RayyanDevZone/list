@@ -8,26 +8,42 @@ import "react-toastify/dist/ReactToastify.css";
 const AddTask = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [taskText, setTaskText] = useState("");
+  const [allTasks, setAllTasks] = useState("");
+  const [showOptions, setShowOptions] = useState(false); // State to manage dropdown options
+
+  const categories = ["Work", "Study", "Travel", "Home", "Shopping"]; // List of categories
 
   const isFormValid = selectedCategory !== "" && taskText.trim() !== "";
 
   const handleCreateTask = () => {
     if (isFormValid) {
-     
+      const newTask = {
+        category: selectedCategory,
+        text: taskText,
+      };
+      const existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+      existingTasks.push(newTask);
+
+      localStorage.setItem("tasks", JSON.stringify(existingTasks));
+
+      setSelectedCategory("");
+      setTaskText("");
+
       toast.success("Task Added Successfully", {
         position: toast.POSITION.BOTTOM_CENTER,
         autoClose: 3000,
         style: {
-          background: 'green', 
-          color: 'white',
-          borderRadius:'30px',
-          boxShadow:" 0px 4px 4px 0px #00000040" ,
-          padding:"7px 22px"
+          background: "green",
+          color: "white",
+          borderRadius: "30px",
+          boxShadow: "0px 4px 4px 0px #00000040",
+          padding: "7px 22px",
         },
       });
 
-      setSelectedCategory("");
-      setTaskText("");
+      const updatedAllTasks = [...allTasks, newTask];
+      setAllTasks(updatedAllTasks);
     }
   };
 
@@ -41,19 +57,28 @@ const AddTask = () => {
       </div>
       <div className="background-blue">
         <div className="category">
-          <label htmlFor="categorySelect">Select a category</label>
-          <select
-            required
-            id="categorySelect"
-            onChange={(e) => setSelectedCategory(e.target.value)}
+          {/* <label htmlFor="categorySelect">Select a category</label> */}
+          <div
+            className="dummy-dropdown"
+            onClick={() => setShowOptions(!showOptions)}
           >
-            <option value="empty"></option>
-            <option value="work">Work</option>
-            <option value="study">Study</option>
-            <option value="travel">Travel</option>
-            <option value="home">Home</option>
-            <option value="shopping">Shopping</option>
-          </select>
+            {selectedCategory || "Select a category"}
+            {showOptions && (
+              <ul className="options">
+                {categories.map((category) => (
+                  <li
+                    key={category}
+                    onClick={() => {
+                      setSelectedCategory(category);
+                      setShowOptions(false);
+                    }}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
 
           <label htmlFor="taskInput">Type a task here</label>
           <textarea

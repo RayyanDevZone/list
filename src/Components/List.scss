@@ -48,12 +48,12 @@ width: 375px;
   display: flex;
   align-items: center;
   font-size: 0.8rem;
-  justify-content: center;
+  justify-content: center; 
 position: fixed;
 width: 375px;
-margin-top: 88px;
+margin-top: 70px;
 
-  > h1 {
+  >.title{
     margin-left: 25px;
     color: #2196F3;
     font-family: Poppins;

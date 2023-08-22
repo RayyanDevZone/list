@@ -16,7 +16,7 @@ const List = () => {
        <img src={BurgerIcon} alt='menu'/>
       </div>
       <div className='heading'>
-        <h1>TODO LIST</h1>
+        <h1 className='title'>TODO LIST</h1>
       </div>
       <div className='tasks'>
         <div className='cards'>
