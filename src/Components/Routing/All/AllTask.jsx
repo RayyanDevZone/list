@@ -15,32 +15,21 @@ const AllTask = () => {
     const allTasks = Object.values(tasks).flat();
     setAllTasks(allTasks);
   }, []);
-
-  const handleDeleteTask = (index) => {
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || {};
-
-    const category = allTasks[index].category;
-
-    if (tasks[category]) {
-      tasks[category].splice(index, 1);
-
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-
-      const updatedAllTasks = tasks[category].slice();
-      setAllTasks(updatedAllTasks);
-    }
+  
+  const handleDeleteTask = (taskId) => {
+    const updatedTasks = allTasks.filter(task => task.id !== taskId);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    setAllTasks(updatedTasks);
   };
+  
+  
 
   const handleToggleComplete = (index) => {
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
     if (index >= 0 && index < tasks.length) {
       tasks[index].completed = !tasks[index].completed;
-      console.log("clicked");
-      console.log(tasks[index].completed);
       localStorage.setItem("tasks", JSON.stringify(tasks));
-
-      // You can update the state if needed
       setAllTasks([...tasks]);
     }
   };
@@ -58,8 +47,8 @@ const AllTask = () => {
       </div>
       <div className="daily">
         <div className="do">
-          {allTasks.map((item, index) => (
-            <div key={index} className="task-item">
+          {allTasks.map((item) => (
+            <div key={item.id} className="task-item">
               <img id="hash" src={Dot} alt="" />
               <p
                 style={{
@@ -81,13 +70,13 @@ const AllTask = () => {
                 id="tick"
                 src={Tick}
                 alt=""
-                onClick={() => handleToggleComplete(index)}
+                onClick={() => handleToggleComplete(item.id)}
               />
               <img
                 id="delete"
                 src={Delete}
                 alt=""
-                onClick={() => handleDeleteTask(index)}
+                onClick={() => handleDeleteTask(item.id)}
               />
             </div>
           ))}
