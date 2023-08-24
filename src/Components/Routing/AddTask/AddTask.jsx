@@ -4,20 +4,23 @@ import { Link } from "react-router-dom";
 import Cross from "../../../images/close 1.svg";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import EmojiPicker from "emoji-picker-react";
 
 const AddTask = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [taskText, setTaskText] = useState("");
   const [allTasks, setAllTasks] = useState("");
-  const [showOptions, setShowOptions] = useState(false); // State to manage dropdown options
+  const [showOptions, setShowOptions] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
-  const categories = ["Work", "Study", "Travel", "Home", "Shopping"]; // List of categories
+  const categories = ["Work", "Study", "Travel", "Home", "Shopping"]; 
 
   const isFormValid = selectedCategory !== "" && taskText.trim() !== "";
-
+  const _id= new Date().getTime();
   const handleCreateTask = () => {
     if (isFormValid) {
       const newTask = {
+        id:_id,
         category: selectedCategory,
         text: taskText,
       };
@@ -62,7 +65,7 @@ const AddTask = () => {
             className="dummy-dropdown"
             onClick={() => setShowOptions(!showOptions)}
           >
-            {selectedCategory || "Select a category"}
+            {selectedCategory || ""}
             {showOptions && (
               <ul className="options">
                 {categories.map((category) => (
@@ -79,16 +82,40 @@ const AddTask = () => {
               </ul>
             )}
           </div>
-
-          <label htmlFor="taskInput">Type a task here</label>
+          <div id="labeling">
+          <label htmlFor="taskInput">Type a task here</label>  <button
+            id="emoji-btn"
+            onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+          >
+            😊
+          </button>  </div>
+          <div className="textarea_emoji">
           <textarea
             required
             id="taskInput"
             rows="4"
             value={taskText}
             onChange={(e) => setTaskText(e.target.value)}
-          ></textarea>
+          >
+           
+          </textarea>
 
+          {showEmojiPicker && (
+            <EmojiPicker
+              onEmojiClick={(event, emojiObject) => {
+                setTaskText((prevText) => prevText + emojiObject.emoji);
+                setShowEmojiPicker(false);
+                {console.log(emojiObject)}
+              }}
+              disableSearchBar
+              disableSkinTonePicker
+              groupVisibility={{ 
+                recently_used: false,
+              }}
+              preload
+            />
+          )}
+          </div>
           <button id="btn" disabled={!isFormValid} onClick={handleCreateTask}>
             Create
           </button>
