@@ -101,17 +101,18 @@ const AddTask = () => {
           </textarea>
 
           {showEmojiPicker && (
-            <EmojiPicker
+            <EmojiPicker 
+            className="EmojiPicker"
               onEmojiClick={(event, emojiObject) => {
-                setTaskText((prevText) => prevText + emojiObject.emoji);
+                setTaskText((prevText) => prevText + event.emoji);
                 setShowEmojiPicker(false);
-                {console.log(emojiObject)}
+                {console.log(event.emoji)}
               }}
-              disableSearchBar
-              disableSkinTonePicker
-              groupVisibility={{ 
-                recently_used: false,
-              }}
+              // disableSearchBar
+              // disableSkinTonePicker
+              // groupVisibility={{ 
+              //   recently_used: false,
+              // }}
               preload
             />
           )}

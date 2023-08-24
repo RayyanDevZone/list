@@ -12,7 +12,7 @@
   width: 100%;
   background-color: #2196f3;
 }
-
+textarea_emoji
 .category {
     font-family: "Poppins", sans-serif;
   height: 75vh;
@@ -105,9 +105,9 @@
       }
     }
   } 
-// .textarea_emoji{
- 
-// }
+.textarea_emoji{
+ position: relative;
+}
 
 
   select,
@@ -122,6 +122,7 @@
     background-color: #f5f5f5;
     border-radius: 8px;
     margin-left: 15px;
+    // position: relative;
     margin-right: 15px;
     &:focus {
         outline: none;
@@ -175,4 +176,20 @@
   display: flex;
   width: 320px;
   justify-content: space-between;
+}
+
+
+// .EmojiPicker{
+//   position: relative;
+//   top: 0%;
+// }
+.EmojiPickerReact.epr-main  {
+  position: absolute !important;
+  top: 0%;
+  left: 4.7%;
+  height: 263px !important;
+  width: 305px !important;
+}
+.EmojiPickerReact .Flex.FlexRow{
+display: none !important;
 }
