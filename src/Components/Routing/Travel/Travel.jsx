@@ -5,7 +5,7 @@ import BackButton from '../../../images/return 1.svg';
 import Dot from '../../../images/blur 1.svg';
 import Tick from '../../../images/checked 1.svg';
 import Delete from '../../../images/delete 1.svg';
-
+import PLus from "../../../images/plus 1.svg";
 const Travel = () => {
   const [travelTasks, setTravelTasks] = useState([]);
 
@@ -47,7 +47,8 @@ const Travel = () => {
             <div key={task.id} className='task-item'>
               <img id='hash' src={Dot} alt='' />
               <p
-                style={{
+               className="tsk"
+               style={{
                   margin: 0,
                   flex: 1,
                   overflow: 'hidden',
@@ -55,8 +56,9 @@ const Travel = () => {
                   WebkitBoxOrient: 'vertical',
                   WebkitLineClamp: 2,
                   textOverflow: 'ellipsis',
+                  textAlign:'start',
                   textDecoration: task.completed ? 'line-through' : 'none',
-                  color: task.completed ? '#ccc' : 'inherit',
+                  color: task.completed ? '#616161' : 'inherit',
                 }}
               >
                 {task.text}
@@ -76,6 +78,13 @@ const Travel = () => {
             </div>
           ))
         )}
+      </div>
+      <div className="footer">
+        <div className="logo_cont">
+          <Link to="/addtask">
+            <img src={PLus} alt="" />
+          </Link>
+        </div>
       </div>
     </div>
   );

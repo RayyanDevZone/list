@@ -4,6 +4,7 @@
     background-color: white;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .h{
    
@@ -22,3 +23,8 @@
         
     }
 }
+.footer {
+    width: 375px;
+    position: absolute;
+    left: 0;
+  }

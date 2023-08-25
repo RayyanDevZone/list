@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./List.scss";
 import BookIcon from "../images/book 1.svg";
 import ClipboardIcon from "../images/clipboard (1) 1.svg";
@@ -8,18 +8,31 @@ import ShoppingIcon from "../images/online-shopping 1.svg";
 import WorldIcon from "../images/world 1.svg";
 import BurgerIcon from "../images/menu-_1_ 1.svg";
 import { useNavigate } from "react-router-dom";
-
 const List = () => {
+  const [keyLength, setKeyLength] = useState(0);
+  const [tasksCount, setTasksCount] = useState({
+    Work: 0,
+    Study: 0,
+    Travel: 0,
+    Shopping: 0,
+    Home: 0,
+  });
 
-  useEffect(()=>{
-   const Item=localStorage.getItem('tasks')
+  useEffect(() => {
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || {};
+    const allTasks = Object.values(tasks).flat();
+    setKeyLength(allTasks.length);
 
-    if(item=>item.category=="All"){
-  
-    }
-  },[])
-  
+    const updatedTasksCount = {
+      Work: allTasks.filter((task) => task.category === "Work").length,
+      Study: allTasks.filter((task) => task.category === "Study").length,
+      Travel: allTasks.filter((task) => task.category === "Travel").length,
+      Shopping: allTasks.filter((task) => task.category === "Shopping").length,
+      Home: allTasks.filter((task) => task.category === "Home").length,
+    };
 
+    setTasksCount(updatedTasksCount);
+  }, []);
 
   const navigate = useNavigate();
   return (
@@ -41,7 +54,7 @@ const List = () => {
             <img src={ClipboardIcon} alt="Clipboard" />
           </div>
           <div className="head">All</div>
-          <p>{all}</p>
+          <p>{keyLength} tasks</p>
         </div>
 
         <div
@@ -54,7 +67,7 @@ const List = () => {
             <img src={BriefcaseIcon} alt="Briefcase" />
           </div>
           <div className="head">Work</div>
-          <p>14 tasks</p>
+          <p>{tasksCount.Work} tasks</p>
         </div>
 
         <div
@@ -67,7 +80,7 @@ const List = () => {
             <img src={BookIcon} alt="Book" />
           </div>
           <div className="head">Study</div>
-          <p>2 tasks</p>
+          <p>{tasksCount.Study} tasks</p>
         </div>
 
         <div
@@ -80,7 +93,7 @@ const List = () => {
             <img src={WorldIcon} alt="World" />
           </div>
           <div className="head">Travel</div>
-          <p>14 tasks</p>
+          <p>{tasksCount.Travel} tasks</p>
         </div>
 
         <div
@@ -93,7 +106,7 @@ const List = () => {
             <img src={ShoppingIcon} alt="Shopping" />
           </div>
           <div className="head">Shopping</div>
-          <p>5 tasks</p>
+          <p>{tasksCount.Shopping} tasks</p>
         </div>
 
         <div
@@ -106,7 +119,7 @@ const List = () => {
             <img src={HouseIcon} alt="House" />
           </div>
           <div className="head">Home</div>
-          <p>8 tasks</p>
+          <p>{tasksCount.Home} tasks</p>
         </div>
       </div>
     </div>

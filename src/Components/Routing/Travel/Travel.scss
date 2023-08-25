@@ -1,7 +1,13 @@
-.travel{
-    height: 100vh;
-    width: 375px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
+.travel {
+  height: 100vh;
+  width: 375px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.footer {
+  width: 100%;
+  position: absolute;
+  left: 0;
 }

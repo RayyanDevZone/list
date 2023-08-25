@@ -5,7 +5,7 @@ import BackButton from '../../../images/return 1.svg';
 import Dot from '../../../images/blur 1.svg';
 import Tick from '../../../images/checked 1.svg';
 import Delete from '../../../images/delete 1.svg';
-
+import PLus from "../../../images/plus 1.svg";
 const Home = () => {
   const [homeTasks, setHomeTasks] = useState([]);
 
@@ -47,6 +47,7 @@ const Home = () => {
             <div key={task.id} className='task-item'>
               <img id='hash' src={Dot} alt='' />
               <p
+               className="tsk"
                 style={{
                   margin: 0,
                   flex: 1,
@@ -56,7 +57,7 @@ const Home = () => {
                   WebkitLineClamp: 2,
                   textOverflow: 'ellipsis',
                   textDecoration: task.completed ? 'line-through' : 'none',
-                  color: task.completed ? '#ccc' : 'inherit',
+                  color: task.completed ? '#616161' : 'inherit',
                 }}
               >
                 {task.text}
@@ -76,6 +77,13 @@ const Home = () => {
             </div>
           ))
         )}
+      </div>
+      <div className="footer">
+        <div className="logo_cont">
+          <Link to="/addtask">
+            <img src={PLus} alt="" />
+          </Link>
+        </div>
       </div>
     </div>
   );

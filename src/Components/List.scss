@@ -84,7 +84,9 @@ html {
   align-items: start;
   padding: 15px;
   border-radius: 4px;
-  
+  &:hover {
+    cursor: pointer; 
+  }
   > .icon {
     font-size: 2rem;
     margin-top: 5px;
