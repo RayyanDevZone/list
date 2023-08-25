@@ -58,11 +58,19 @@ const AllTask = () => {
               <div key={item.id} className="task-item">
                 <img id="hash" src={Dot} alt="" />
                 <p
-                  id="tsk"
+                  className="tsk"
                   style={{
-                    textDecoration: item.completed ? "line-through" : "none",
-                    color: item.completed ? "#ccc" : "inherit",
-                  }}
+                  margin: 0,
+                  flex: 1,
+                  overflow: 'hidden',
+                  display: '-webkit-box',
+                  WebkitBoxOrient: 'vertical',
+                  WebkitLineClamp: 2,
+                  textOverflow: 'ellipsis',
+                  textAlign:'start',
+                  textDecoration: item.completed ? 'line-through' : 'none',
+                  color: item.completed ? '#616161' : 'inherit',
+                }}
                 >
                   {item.text}
                 </p>
