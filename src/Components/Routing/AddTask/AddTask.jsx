@@ -106,7 +106,7 @@ const AddTask = () => {
               onEmojiClick={(event, emojiObject) => {
                 setTaskText((prevText) => prevText + event.emoji);
                 setShowEmojiPicker(false);
-                {console.log(event.emoji)}
+                
               }}
               // disableSearchBar
               // disableSkinTonePicker

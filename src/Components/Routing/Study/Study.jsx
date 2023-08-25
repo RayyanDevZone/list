@@ -40,38 +40,42 @@ const Study = () => {
         <h1>Study</h1>
       </div>
       <div className='task-list'>
-        {studyTasks.map(task => (
-          <div key={task.id} className='task-item'>
-            <img id='hash' src={Dot} alt='' />
-            <p
-              style={{
-                margin: 0,
-                flex: 1,
-                overflow: 'hidden',
-                display: '-webkit-box',
-                WebkitBoxOrient: 'vertical',
-                WebkitLineClamp: 2,
-                textOverflow: 'ellipsis',
-                textDecoration: task.completed ? 'line-through' : 'none',
-                color: task.completed ? '#ccc' : 'inherit',
-              }}
-            >
-              {task.text}
-            </p>
-            <img
-              id='tick'
-              src={Tick}
-              alt=''
-              onClick={() => handleToggleComplete(task.id)}
-            />
-            <img
-              id='delete'
-              src={Delete}
-              alt=''
-              onClick={() => handleDeleteTask(task.id)}
-            />
-          </div>
-        ))}
+        {studyTasks.length === 0 ? (
+          <p>No Task Right Now!</p>
+        ) : (
+          studyTasks.map(task => (
+            <div key={task.id} className='task-item'>
+              <img id='hash' src={Dot} alt='' />
+              <p
+                style={{
+                  margin: 0,
+                  flex: 1,
+                  overflow: 'hidden',
+                  display: '-webkit-box',
+                  WebkitBoxOrient: 'vertical',
+                  WebkitLineClamp: 2,
+                  textOverflow: 'ellipsis',
+                  textDecoration: task.completed ? 'line-through' : 'none',
+                  color: task.completed ? '#ccc' : 'inherit',
+                }}
+              >
+                {task.text}
+              </p>
+              <img
+                id='tick'
+                src={Tick}
+                alt=''
+                onClick={() => handleToggleComplete(task.id)}
+              />
+              <img
+                id='delete'
+                src={Delete}
+                alt=''
+                onClick={() => handleDeleteTask(task.id)}
+              />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

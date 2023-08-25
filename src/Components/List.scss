@@ -21,14 +21,14 @@ html {
 }
 
 .burger {
-
   height: 13vh;
   width: 100%;
   background-color: white;
   display: flex;
   align-items: center;
-position: fixed;
-width: 375px;
+  position: fixed;
+  width: 375px;
+  
   > img {
     font-size: 1.5rem;
     margin-left: 25px;
@@ -36,8 +36,7 @@ width: 375px;
     height: 28px;
     top: 14px;
     left: 13px;
-    padding: 4.651617050170898px 2.548828601837158px 4.67578125px
-      2.519530773162842px;
+    padding: 4.651617050170898px 2.548828601837158px 4.67578125px 2.519530773162842px;
   }
 }
 
@@ -48,12 +47,12 @@ width: 375px;
   display: flex;
   align-items: center;
   font-size: 0.8rem;
-  justify-content: center; 
-position: fixed;
-width: 375px;
-margin-top: 70px;
+  justify-content: center;
+  position: fixed;
+  width: 375px;
+  margin-top: 70px;
 
-  >.title{
+  > .title {
     margin-left: 25px;
     color: #2196F3;
     font-family: Poppins;
@@ -85,7 +84,7 @@ margin-top: 70px;
   align-items: start;
   padding: 15px;
   border-radius: 4px;
-
+  
   > .icon {
     font-size: 2rem;
     margin-top: 5px;
@@ -95,13 +94,11 @@ margin-top: 70px;
     font-size: 1rem;
     margin-top: 4px; 
     font-family: Poppins;
-    font-size: 20px;
     font-weight: 500;
     line-height: 30px;
     letter-spacing: 0em;
     text-align: left;
     color: #2196F3;
-    text-decoration: none;
   }
 
   > p {
